@@ -1,0 +1,19 @@
+version: 3
+
+tasks:
+  sprig:
+    desc: pulls the latest documentation from sprig
+    vars:
+      REPO_URL: https://github.com/Masterminds/sprig
+    cmds:
+      - mkdir -p src/docs/sprig/
+      - |
+        mkdir -p .temp
+        cd .temp
+        git init
+        git remote add -f origin {{ .REPO_URL }}
+        git config core.sparseCheckout true
+        echo "docs/" >> .git/info/sparse-checkout
+        git pull origin master
+      - cp -R .temp/docs/*.md src/docs/sprig
+      - rm -rf .temp
