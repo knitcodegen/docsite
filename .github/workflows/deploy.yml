@@ -12,6 +12,6 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.DOCSITE_GITHUB_TOKEN }}
         TARGET_REPO: knitcodegen/knit
-        TARGET_BRANCH: master
+        TARGET_BRANCH: docsite
         BUILD_SCRIPT: yarn && yarn build
         BUILD_DIR: src/.vuepress/dist/
